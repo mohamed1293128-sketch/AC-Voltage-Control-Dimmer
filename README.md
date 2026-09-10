@@ -65,15 +65,33 @@ Connect `VCC` (3.3V/5V), `GND`, `ZERO_CROSS` (`GPIO 27`), and `TRIAC_GATE` (`GPI
 
 ---
 
-## 🚀 Roadmap
+## 📦 TriacDimmer Arduino Library
 
-- [x] Breadboard prototype & zero-crossing firmware
-- [x] Standalone optoisolated AC dimmer PCB breakout module
-- [x] Full system build (OLED + Web UI + OTA + EEPROM)
-- [x] Dedicated C++ Arduino driver library for the standalone module (`TriacDimmer`)
-- [ ] ESP-IDF port of the driver library
-- [ ] Multi-channel support (currently single-instance only)
-- [ ] Configurable 50/60 Hz support and adjustable gate pulse width
+The standalone AC Dimmer Module is supported by the custom `TriacDimmer` Arduino C++ library.
+
+The library abstracts the low-level TRIAC control logic, including:
+
+- Zero-cross detection
+- Phase-angle timing
+- ESP32 hardware timer control
+- TRIAC gate pulse generation
+- Output percentage control
+- Enable / disable control
+
+### Basic Usage
+
+--cpp
+#include <TriacDimmer.h>
+
+TriacDimmer dimmer(27, 26);
+
+void setup() {
+    dimmer.begin();
+}
+
+void loop() {
+    dimmer.setPercent(50);
+}
 
 ---
 
