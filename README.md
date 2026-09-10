@@ -12,8 +12,8 @@ An isolated AC phase-cut dimming module controlled by an ESP32 microcontroller. 
 | ![Breadboard Schematic](hardware/PCB-Module/pcb-layout.jpeg) | 
 
 ### Module Footprint & Prototype
-| PCB Footprint / Layout | 
-| :---: | :---: |
+| PCB Footprint| 
+| :---: |
 | ![PCB Footprint](hardware/PCB-Module/pcb-3rd-render.jpeg) |
 
 ---
