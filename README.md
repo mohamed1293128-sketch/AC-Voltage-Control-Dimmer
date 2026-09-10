@@ -4,6 +4,20 @@ An isolated AC phase-cut dimming module controlled by an ESP32 microcontroller. 
 
 ---
 
+## 📸 Circuit Schematics & Layouts
+
+### Schematics
+| PCB Schematic |
+| :---: |
+| ![Breadboard Schematic](hardware/PCB-Module/pcb-layout.jpeg) | 
+
+### Module Footprint & Prototype
+| PCB Footprint / Layout | 
+| :---: | :---: |
+| ![PCB Footprint](hardware/PCB-Module/pcb-3rd-render.jpeg) |
+
+---
+
 ## 📁 Repository Structure
 
 * `firmware/` – ESP32 source code (WiFiManager, WebServer, U8g2 OLED, Preferences, OTA)
