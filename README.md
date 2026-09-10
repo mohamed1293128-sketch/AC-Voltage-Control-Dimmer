@@ -1,71 +1,56 @@
-# ESP32 Smart AC Phase-Cut Dimmer Module
+# ESP32 AC Voltage Control Dimmer
 
-An intelligent, isolated AC phase-cut dimming module controlled by an ESP32. Features hardware zero-crossing detection, dynamic TRIAC pulse triggering, a responsive web interface, an SH1106 OLED UI, local mDNS support, and OTA update capabilities.
-
----
-
-## 📸 Media & Demonstration
-
-| PCB Layout (KiCad) | 3D Render |
-| :---: | :---: |
-| ![PCB Layout]() | ![3D Render](docs/images/pcb-3d-render.jpeg) |
-
-### Demo
-
-![Demonstration](docs/images/demo.gif)
+An isolated AC phase-cut dimming module controlled by an ESP32 microcontroller. The system utilizes hardware zero-crossing detection for precise power control, features a modern web dashboard, an SPI OLED interface, EEPROM persistence, and Over-The-Air (OTA) updates.
 
 ---
 
-## ✨ Features
+## 📁 Repository Structure
 
-- **Precise Phase-Cut Dimming** — Zero-crossing interrupt triggering with timer-driven hardware TRIAC pulse output.
-- **Web UI Control** — Built-in glassmorphism dark-theme control panel, no app required.
-- **Captive Portal Provisioning** — Uses `WiFiManager` for WiFi setup, no hardcoded credentials.
-- **SH1106 SPI OLED Display** — Live dimming percentage bar, connection status, and RSSI signal meter.
-- **Persistent Settings** — Dimming state survives power cycles via ESP32 `Preferences`.
-- **mDNS Addressing** — Reachable at `http://esp32-dimmer.local` on your local network.
-- **OTA Updates** — Flash new firmware wirelessly, no USB cable needed.
+* `firmware/` – ESP32 source code (WiFiManager, WebServer, U8g2 OLED, Preferences, OTA)
+* `hardware/` – Circuit schematics, PCB footprints, and hardware layout assets
+* `KiCAD/` – KiCad source design files and project data
 
 ---
 
-## 📌 Hardware Pinout
+## ⚡ Technical Features
 
-| ESP32 Pin | Function | Description |
-| :---: | :---: | :---: |
-| **GPIO 27** | `ZERO_CROSS_PIN` | Zero-crossing interrupt signal input |
-| **GPIO 26** | `TRIAC_GATE_PIN` | TRIAC gate control output |
-| **GPIO 2**  | `LED_PIN` | Status indicator LED |
-| **GPIO 18** | OLED SCK | SPI clock |
-| **GPIO 23** | OLED SDA/MOSI | SPI master output data |
-| **GPIO 5**  | OLED DC | Data/command selection |
-| **GPIO 4**  | OLED RST | Display reset |
+* **Phase-Cut Power Control:** Zero-crossing interrupt triggering coupled with dynamic timer-driven TRIAC pulse driving.
+* **Web UI Dashboard:** Built-in responsive web panel with live brightness controls.
+* **Captive Portal Setup:** `WiFiManager` handles dynamic network pairing without hardcoding SSIDs or credentials.
+* **SH1106 SPI Display:** Live dimming display with dynamic RSSI indicator driven via `U8g2`.
+* **State Retention:** Preserves dimming settings across reboots using non-volatile `Preferences` storage.
+* **mDNS & OTA Updates:** Easily reachable at `http://esp32-dimmer.local` and flashable wirelessly.
 
 ---
 
-## 📚 Libraries Required
+## 📌 Hardware Pin Configuration
 
-Install these via Arduino IDE or PlatformIO:
-
-- [`WiFiManager`](https://github.com/tzapu/WiFiManager)
-- [`U8g2`](https://github.com/olikraus/u8g2) — for the SH1106 display
-- `WebServer`, `Preferences`, `ArduinoOTA`, `ESPmDNS` — bundled with the ESP32 core
-
----
-
-## 🛠️ Usage & Setup
-
-1. **Flash the firmware** in `firmware/` to your ESP32.
-2. **Configure WiFi** — on first boot, connect to the `ESP32-DIMMER` access point (password: `12345678`) and enter your local network credentials.
-3. **Open the control panel** at `http://esp32-dimmer.local` (or the assigned IP) to start controlling brightness.
+| Function | ESP32 Pin | Details |
+| :--- | :--- | :--- |
+| **Zero-Crossing Input** | `GPIO 27` | External Interrupt Source |
+| **TRIAC Gate Output** | `GPIO 26` | Timer-driven Gate Signal |
+| **Status LED** | `GPIO 2` | Connection Indicator |
+| **OLED SCK** | `GPIO 18` | SPI Clock |
+| **OLED SDA / MOSI** | `GPIO 23` | SPI Data Line |
+| **OLED DC** | `GPIO 5` | Data / Command Control |
+| **OLED Reset** | `GPIO 4` | Hardware Reset |
 
 ---
 
-## ⚠️ High Voltage Safety Warning
+## 🛠️ Getting Started
 
-> **DANGER:** This project interfaces directly with mains AC voltage (110–240V). Exposed contacts are dangerous. Fully disconnect power before touching any hardware components.
+1. Flash the firmware provided in the `firmware/` directory using VS Code (PlatformIO) or Arduino IDE.
+2. Connect to the `ESP32-DIMMER` AP (Password: `12345678`) on initial boot to set up your local WiFi network.
+3. Access the control interface at `http://esp32-dimmer.local` or the assigned local IP address.
+
+---
+
+## ⚠️ Safety Warning
+
+> **HIGH VOLTAGE HAZARD:** This project operates directly on mains AC voltage (110V–240V). Exposed wiring can cause severe shock or death. Ensure mains AC power is completely isolated before servicing hardware.
 
 ---
 
 ## 📄 License
 
-Licensed under the MIT License — see [LICENSE](LICENSE) for details.
+Distributed under the MIT License.
