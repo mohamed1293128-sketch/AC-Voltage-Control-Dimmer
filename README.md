@@ -1,10 +1,10 @@
 # ESP32 AC Voltage Control Dimmer System & Module
 
-An isolated AC phase-cut dimming solution built for the ESP32, featuring hardware zero-crossing detection for precise power control. 
+An isolated AC phase-cut dimming solution built for the ESP32, featuring hardware zero-crossing detection for precise power control.
 
 This repository provides two complete hardware implementations:
 1. **Full Smart Dimmer System:** Features an SH1106 OLED display, captive portal setup, glassmorphism web control UI, mDNS, non-volatile state storage, and OTA wireless updates.
-2. **Standalone Plug-and-Play AC Dimmer Module:** A compact, breakout PCB module designed specifically for quick integration into external projects without the display or web overhead.
+2. **Standalone Plug-and-Play AC Dimmer Module:** A compact, breakout PCB module designed specifically for quick integration into external projects without the display or web overhead. Driven by the [`TriacDimmer`](firmware/TriacDimmer/) Arduino library, which isolates zero-cross detection, timer-based TRIAC firing, and dimming percentage into a clean, reusable API.
 
 ---
 
@@ -25,6 +25,7 @@ This repository provides two complete hardware implementations:
 ## 📁 Repository Structure
 
 * `firmware/` – Complete ESP32 system firmware (WiFiManager, WebServer, U8g2 OLED, Preferences, OTA)
+* `firmware/TriacDimmer/` – Standalone `TriacDimmer` Arduino library for the breakout module: zero-cross ISR, hardware-timer TRIAC firing, and a simple `setPercent()` / `getPercent()` API
 * `hardware/` – Schematics, layouts, renders, and manufacturing Gerber files for both the breadboard prototype and PCB breakout module
 * `KiCAD/` – Source KiCad project files and footprints
 
@@ -34,6 +35,7 @@ This repository provides two complete hardware implementations:
 
 * **Dual Hardware Options:** Use the full-featured OLED/Web system or deploy the standalone AC Dimmer module for bare-metal builds.
 * **Production-Ready Module:** Includes ready-to-order Gerber ZIP files in `hardware/PCB Module/` for instant PCB manufacturing (JLCPCB, PCBWay, etc.).
+* **Reusable Driver Library:** The standalone module ships with `TriacDimmer`, a self-contained Arduino library that keeps the timing-critical dimmer logic separate from application code — drop it in `libraries/`, `#include <TriacDimmer.h>`, and call `begin()` / `setPercent()`.
 * **Optocoupled Safety:** High-voltage AC mains logic is completely isolated from low-voltage DC microcontroller pins using `PC817` and `MOC3021` optoisolators.
 * **Phase-Cut Power Control:** Precision zero-crossing interrupt detection driving hardware timer interrupts for smooth TRIAC firing.
 * **Full-Featured System Build:**
@@ -59,7 +61,7 @@ This repository provides two complete hardware implementations:
 | **OLED Reset** | `GPIO 4` | Hardware Reset Pin |
 
 ### Standalone Module Breakout Pins
-Connect `VCC` (3.3V/5V), `GND`, `ZERO_CROSS` (`GPIO 27`), and `TRIAC_GATE` (`GPIO 26`) directly to any microcontroller pin with external interrupt support.
+Connect `VCC` (3.3V/5V), `GND`, `ZERO_CROSS` (`GPIO 27`), and `TRIAC_GATE` (`GPIO 26`) directly to any microcontroller pin with external interrupt support — the pins map straight onto the `TriacDimmer(zeroCrossPin, triacGatePin)` constructor.
 
 ---
 
@@ -68,15 +70,19 @@ Connect `VCC` (3.3V/5V), `GND`, `ZERO_CROSS` (`GPIO 27`), and `TRIAC_GATE` (`GPI
 - [x] Breadboard prototype & zero-crossing firmware
 - [x] Standalone optoisolated AC dimmer PCB breakout module
 - [x] Full system build (OLED + Web UI + OTA + EEPROM)
-- [ ] Dedicated C++ Arduino/ESP-IDF Driver Library release for the standalone module
+- [x] Dedicated C++ Arduino driver library for the standalone module (`TriacDimmer`)
+- [ ] ESP-IDF port of the driver library
+- [ ] Multi-channel support (currently single-instance only)
+- [ ] Configurable 50/60 Hz support and adjustable gate pulse width
 
 ---
 
-## 🛠️ Quick Start Guide
+## 🚀 Quick Start Guide
 
 1. Upload the firmware in `firmware/` using VS Code (PlatformIO) or Arduino IDE.
 2. Connect to the `ESP32-DIMMER` AP (Password: `12345678`) to configure WiFi credentials.
 3. Access `http://esp32-dimmer.local` or the assigned IP address in your browser to adjust dimmer levels.
+4. For the standalone module, copy `firmware/TriacDimmer/` into your Arduino `libraries/` folder, `#include <TriacDimmer.h>`, and call `dimmer.begin()` / `dimmer.setPercent()` from your own sketch.
 
 ---
 
