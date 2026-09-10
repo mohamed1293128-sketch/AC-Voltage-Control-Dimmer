@@ -80,7 +80,7 @@ The library abstracts the low-level TRIAC control logic, including:
 
 ### Basic Usage
 
---cpp
+```cpp
 #include <TriacDimmer.h>
 
 TriacDimmer dimmer(27, 26);
