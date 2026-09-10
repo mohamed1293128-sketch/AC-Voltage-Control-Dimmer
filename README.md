@@ -4,24 +4,24 @@ An isolated AC phase-cut dimming module controlled by an ESP32 microcontroller. 
 
 ---
 
-## 📸 Circuit Schematics & Layouts
+## 📸 Circuit Schematics & PCB Layouts
 
 ### Schematics
-| PCB Schematic |
-| :---: |
-| ![Breadboard Schematic](hardware/PCBModule/pcb-layout.jpeg) | 
+| Breadboard Schematic | PCB Schematic |
+| :---: | :---: |
+| ![Breadboard Schematic](hardware/Breadboard/breadboard-schematic.png) | ![PCB Schematic](hardware/PCB%20Module/Screenshot%202026-05-31%20001912.png) |
 
-### Module Footprint & Prototype
-| PCB Footprint| 
-| :---: |
-| ![PCB Footprint](hardware/PCB-Module/pcb-3rd-render.jpeg) |
+### PCB Design & Layout
+| PCB 3D Render | PCB Layout |
+| :---: | :---: |
+| ![PCB 3D Render](hardware/PCB%20Module/pcb-3d-render.jpeg) | ![PCB Layout](hardware/PCB%20Module/pcb-layout.jpeg) |
 
 ---
 
 ## 📁 Repository Structure
 
 * `firmware/` – ESP32 source code (WiFiManager, WebServer, U8g2 OLED, Preferences, OTA)
-* `hardware/` – Circuit schematics, PCB footprints, and hardware layout assets
+* `hardware/` – Circuit schematics, PCB 3D renders, layouts, and breadboard assets
 * `KiCAD/` – KiCad source design files and project data
 
 ---
