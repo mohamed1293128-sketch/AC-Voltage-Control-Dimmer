@@ -8,7 +8,7 @@ An intelligent, isolated AC phase-cut dimming module controlled by an ESP32. Fea
 
 | PCB Layout (KiCad) | 3D Render |
 | :---: | :---: |
-| ![PCB Layout](docs/images/pcb-layout.jpeg) | ![3D Render](docs/images/pcb-3d-render.jpeg) |
+| ![PCB Layout]([docs/images/pcb-layout.jpeg](https://github.com/mohamed1293128-sketch/AC-Voltage-Control-Dimmer/blob/23477a91314eaefc83f5e0714745d45410fbef9e/hardware/PCB%20Module/pcb-layout.jpeg)) | ![3D Render](docs/images/pcb-3d-render.jpeg) |
 
 ### Demo
 
