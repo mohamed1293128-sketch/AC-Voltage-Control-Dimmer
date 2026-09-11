@@ -18,7 +18,7 @@ This repository provides two complete hardware implementations:
 ### PCB Design & Layout
 | PCB Module 3D Render | PCB Module Layout |
 | :---: | :---: |
-| ![PCB 3D Render](hardware/PCB%20Module/pcb-3d-render.jpeg) | ![PCB Layout](hardware/PCB%20Module/pcb-layout.jpeg) |
+| ![PCB 3D Render](hardware/PCB%20Module/pcb3d.jpeg) | ![PCB Layout](hardware/PCB%20Module/pcblayout.jpeg) |
 
 ---
 
