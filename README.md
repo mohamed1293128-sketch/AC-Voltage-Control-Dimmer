@@ -93,6 +93,7 @@ void loop() {
     dimmer.setPercent(50);
 }
 ```
+
 ---
 
 ## 🚀 Quick Start Guide
