@@ -4,7 +4,7 @@ An isolated AC phase-cut dimming solution built for the ESP32, featuring hardwar
 
 This repository provides two complete hardware implementations:
 1. **Full Smart Dimmer System:** Features an SH1106 OLED display, captive portal setup, glassmorphism web control UI, mDNS, non-volatile state storage, and OTA wireless updates.
-2. **Standalone Plug-and-Play AC Dimmer Module:** A compact, breakout PCB module designed specifically for quick integration into external projects without the display or web overhead. Driven by the [`TriacDimmer`](firmware/TriacDimmer/) Arduino library, which isolates zero-cross detection, timer-based TRIAC firing, and dimming percentage into a clean, reusable API.
+2. **Standalone Plug-and-Play AC Dimmer Module:** A compact, breakout PCB module designed specifically for quick integration into external projects without the display or web overhead. Driven by the [`TriacDimmer`](lib for Module/) Arduino library, which isolates zero-cross detection, timer-based TRIAC firing, and dimming percentage into a clean, reusable API.
 
 ---
 
