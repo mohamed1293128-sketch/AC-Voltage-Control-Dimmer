@@ -16,9 +16,9 @@ This repository provides two complete hardware implementations:
 | ![Breadboard Schematic](hardware/PCB%20Module/Screenshot%202026-05-31%20001912.png) |
 
 ### PCB Design & Layout
-| PCB Module 3D Render | PCB Module Layout |
-| :---: | :---: |
-| ![PCB 3D Render](hardware/PCB%20Module/pcb3d.png) | ![PCB Layout](hardware/PCB%20Module/pcblayout.png) |
+| PCB Module Schematic | PCB Module 3D Render | PCB Module Layout |
+| :---: | :---: | :---: |
+| ![PCB 3D Render](hardware/PCB%20Module/pcb3d.png) | ![PCB Layout](hardware/PCB%20Module/pcblayout.png) | ![PCB Layout](hardware/PCB%20Module/pcbschem.png) |
 
 ---
 
